@@ -63,10 +63,11 @@ export default function RoomPage({
     setUploading(true);
     
     try {
-      // Upload to Vercel Blob via API
+      // Upload to Vercel Blob via API using JSON payload (Base64)
       const res = await fetch(`/api/upload?filename=${roomId}-${role}-${Date.now()}.jpg`, {
         method: "POST",
-        body: await (await fetch(imageSrc)).blob(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image: imageSrc }),
       });
       
       if (!res.ok) throw new Error("Upload failed");
