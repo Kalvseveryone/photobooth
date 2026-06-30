@@ -1,0 +1,16 @@
+{
+  "name": "Poto Dual-Camera Photobooth",
+  "short_name": "Poto",
+  "description": "Capture moments together from different devices. Realtime dual-camera online photobooth.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdfbfb",
+  "theme_color": "#f472b6",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
