@@ -1,4 +1,4 @@
-export type UserStatus = "waiting" | "ready";
+export type UserStatus = "waiting" | "joined" | "ready";
 
 export interface UserState {
   photoUrl: string | null;

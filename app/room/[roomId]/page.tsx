@@ -29,17 +29,26 @@ export default function RoomPage({
     if (savedRole) {
       setRole(savedRole);
     } else {
+      let newRole: "userA" | "userB" | null = null;
       if (room.userA.status === "waiting" && !room.userA.photoUrl) {
-        setRole("userA");
-        sessionStorage.setItem(`photobooth_${roomId}_role`, "userA");
+        newRole = "userA";
       } else if (room.userB.status === "waiting" && !room.userB.photoUrl) {
-        setRole("userB");
-        sessionStorage.setItem(`photobooth_${roomId}_role`, "userB");
+        newRole = "userB";
+      }
+
+      if (newRole) {
+        setRole(newRole);
+        sessionStorage.setItem(`photobooth_${roomId}_role`, newRole);
+        // Inform backend that this slot is now taken
+        updateRoom({
+          [newRole]: { photoUrl: null, status: "joined" }
+        });
       } else {
         alert("Room sudah penuh!");
         router.push("/");
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room, role, roomId, router]);
 
   // Check if both are ready to redirect
