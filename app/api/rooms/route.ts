@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     
     const roomId = generateRoomId();
     
-    const newRoom: Room = {
+    const newRoom = {
       roomId,
       userA: { photoUrl: null, status: "waiting" },
       userB: { photoUrl: null, status: "waiting" },
