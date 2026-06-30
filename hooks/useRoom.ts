@@ -14,7 +14,7 @@ export function useRoom(roomId: string) {
 
     const fetchInitialState = async () => {
       try {
-        const res = await fetch(`/api/rooms/${roomId}`);
+        const res = await fetch(`/api/rooms/${roomId}`, { cache: "no-store" });
         if (!res.ok) {
           throw new Error("Failed to fetch room");
         }

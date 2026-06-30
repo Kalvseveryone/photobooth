@@ -121,7 +121,11 @@ export default function RoomPage({
         <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-4 animate-pulse">
           <div className="w-8 h-8 bg-pink-300 rounded-full" />
         </div>
-        <p className="text-gray-500 font-medium">Menunggu partner...</p>
+        <p className="text-gray-500 font-medium">
+          {targetUser?.status === "joined" 
+            ? "Partner sedang bersiap..." 
+            : "Menunggu partner masuk..."}
+        </p>
       </div>
     );
   };

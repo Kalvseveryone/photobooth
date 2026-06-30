@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
+
+export const dynamic = "force-dynamic";
 import { Room } from "@/types";
 
 function generateRoomId(length = 8) {
