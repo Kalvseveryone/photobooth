@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Poto - Dual-Camera Online Photobooth
 
-## Getting Started
+Website photobooth online dua arah yang memungkinkan dua orang berfoto bersama dalam satu photostrip, meskipun berada di perangkat atau lokasi yang berbeda.
 
-First, run the development server:
+## Fitur Utama
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Sinkronisasi Realtime**: Ditenagai oleh Pusher.
+- **Database MongoDB**: State management untuk room dan pengguna.
+- **Penyimpanan Vercel Blob**: Fast serverless image upload.
+- **Dual Camera / Split Screen**: Menggunakan `react-webcam`.
+- **Desain Modern**: Framer motion, glassmorphism, dan TailwindCSS.
+- **Photostrip Generator**: `html2canvas` untuk ekspor resolusi tinggi.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Cara Instalasi
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone repositori ini (jika Anda mendownload source-nya).
+2. Install dependensi:
+   ```bash
+   npm install
+   ```
+3. Copy file `.env.example` menjadi `.env.local` dan isi kredensial berikut:
+   - **MongoDB URI**: Buat cluster gratis di MongoDB Atlas, dapatkan Connection String-nya.
+   - **Pusher**: Buat aplikasi di [Pusher Channels](https://pusher.com/channels), dapatkan `app_id`, `key`, `secret`, dan `cluster`.
+   - **Vercel Blob**: Buat Blob store di dashboard Vercel, copy `BLOB_READ_WRITE_TOKEN`.
+   
+   ```bash
+   cp .env.example .env.local
+   ```
+4. Jalankan server development:
+   ```bash
+   npm run dev
+   ```
+5. Buka `http://localhost:3000` di browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Cara Deploy ke Vercel
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push kode Anda ke GitHub.
+2. Buat project baru di Vercel, import repositori Anda.
+3. Di bagian **Environment Variables**, masukkan seluruh isi `.env.local`.
+4. Tambahkan **Vercel Blob** melalui tab *Storage* di dashboard Vercel Anda.
+5. Klik **Deploy**. Selesai! Tidak ada konfigurasi tambahan yang diperlukan.
